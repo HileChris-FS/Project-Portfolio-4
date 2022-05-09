@@ -3,7 +3,7 @@ import React from "react";
 const Header = () => {
     return (
         <header>
-            <h1>Current US Weather</h1>
+            <h1>US Weather Forecaster</h1>
         </header>
     )
 }
