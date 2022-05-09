@@ -1,9 +1,14 @@
-import Location from "./Location";
+import Header from "./component/Header";
+import Homepage from "./pages/Homepage";
 
 function App() {
   return (
     <div className="App">
-      <Location />
+      <Header />
+      <main>
+        <Homepage />
+      </main>
+      
     </div>
   );
 }

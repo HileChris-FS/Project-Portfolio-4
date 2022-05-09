@@ -21,7 +21,6 @@ const Location = () => {
            
         }
         fetchAPI(); 
-        
     }
    
     return (
@@ -35,6 +34,7 @@ const Location = () => {
                     <label>City</label>
                     <input
                         name="city"
+                        value={city}
                         onChange={(e) => setCity(e.target.value)} />
                 </div>
                 <div>
@@ -45,6 +45,7 @@ const Location = () => {
                 </div>
                 <div>
                     <button type="submit">Submit</button>
+                    <button onClick={() => window.location.reload()}>Reset</button>
                 </div>
             </form>
             <h2>{city} {state}</h2>
