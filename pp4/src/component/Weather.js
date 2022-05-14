@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Sunny from "../images/sunny.jpg";
 import Thunderstorm from "../images/thunderstorm.jpg";
 import Drizzle from "../images/drizzle.jpg";
@@ -16,17 +16,22 @@ const Weather = props => {
     var [id, setID] = useState("");
     let image;
     
-
-    async function fetchAPI(){
-        const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${props.lat}&lon=${props.lon}&appid=90b1d38fb86d7a2a22adbb11b5585174&units=imperial`)
-        const data = await response.json();
-        setTemp(data.main.temp);
-        setConditions(data.weather[0].description);
-        setID(data.weather[0].id);
-        setFeelsLike(data.main.feels_like);
-        
-    }
-        fetchAPI();
+    useEffect(() => {
+        async function fetchAPI(){
+            try {
+            const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${props.lat}&lon=${props.lon}&appid=5fa27a76f3e844905dbb0c506ed24496&units=imperial`)
+            const data = await response.json();
+            setTemp(data.main.temp);
+            setConditions(data.weather[0].description);
+            setID(data.weather[0].id);
+            setFeelsLike(data.main.feels_like);
+            }
+            catch(err)  {
+                console.log(err);
+            }
+        }
+            fetchAPI();
+    }, []);
 
 
         

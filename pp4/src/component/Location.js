@@ -17,17 +17,19 @@ const Location = () => {
    
   
     function FetchData(city, state){
-            
+        
         async function fetchAPI(){
-            const response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city},${state},US&limit=1&appid=90b1d38fb86d7a2a22adbb11b5585174`)
+            try {
+            const response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city},${state},US&limit=1&appid=5fa27a76f3e844905dbb0c506ed24496`)
             const data = await response.json();
             setLat(data[0].lat)
             setLon(data[0].lon)
             console.log(data[0].lat)
-            console.log(lat)
-            
-            
-           
+            console.log(lat) 
+        }
+            catch(err)  {
+                console.log(err);
+              }
         }
         fetchAPI(); 
     }
