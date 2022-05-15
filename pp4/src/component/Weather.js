@@ -16,6 +16,7 @@ const Weather = props => {
     var [id, setID] = useState("");
     let image;
     
+    //fetch
     useEffect(() => {
         async function fetchAPI(){
             try {
@@ -31,10 +32,10 @@ const Weather = props => {
             }
         }
             fetchAPI();
-    }, []);
+    }, [props.lat, props.lon]);
+    
 
-
-        
+    //conditions code check fo images
     if(id === 800) {
         image = Sunny;
     } else 

@@ -14,7 +14,7 @@ const Current = () => {
     
     const navigate = useNavigate();
   
-   
+    //call to page Sevenday
     function seven(){
         navigate("/sevenday" , {state: {lat:{lat}, lon:{lon}, city:{city}, state:{state}}})
     }

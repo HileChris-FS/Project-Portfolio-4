@@ -12,7 +12,7 @@ const Sevenday = () => {
 
     const navigate = useNavigate();
     
-
+    //button back to Current page
     function current(){
         navigate("/current" , {state: {lat:{lat}, lon:{lon}, city:{city}, state:{state}}})
     }

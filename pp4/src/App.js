@@ -15,12 +15,10 @@ function App() {
               <Routes>
                 <Route path="/" element={<Homepage />} />
                 <Route path="/current" element={<Current  />}/>
-                  <Route path="/sevenday" element={<Sevenday />} />
-              
+                <Route path="/sevenday" element={<Sevenday />} />
               </Routes>
             </section>
         </main>
-      
     </div>
   );
 }

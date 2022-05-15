@@ -7,6 +7,8 @@ const Location = () => {
     const [lat, setLat] = useState("");
     const [lon, setLon] = useState("")
     const navigate = useNavigate();
+   
+    //verify defined lat and lon
     useEffect (() => {
         
         if(lat !== "" && lon !== "") {
@@ -15,7 +17,7 @@ const Location = () => {
     
     });
    
-  
+    //fetch function
     function FetchData(city, state){
         
         async function fetchAPI(){
@@ -24,8 +26,6 @@ const Location = () => {
             const data = await response.json();
             setLat(data[0].lat)
             setLon(data[0].lon)
-            console.log(data[0].lat)
-            console.log(lat) 
         }
             catch(err)  {
                 console.log(err);
