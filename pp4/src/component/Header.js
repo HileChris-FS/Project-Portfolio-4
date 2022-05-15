@@ -1,9 +1,14 @@
 import React from "react";
 
 const Header = () => {
+    const newDate = new Date();
+
     return (
         <header>
-            <h1>US Weather Forecaster</h1>
+
+            <h1>Current US Weather</h1>
+            <h2>{newDate.toDateString()}</h2>
+
         </header>
     )
 }
