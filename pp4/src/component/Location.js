@@ -7,6 +7,7 @@ const Location = () => {
     const [lat, setLat] = useState("");
     const [lon, setLon] = useState("")
     const navigate = useNavigate();
+    const [error, setError] = useState("")
    
     //verify defined lat and lon
     useEffect (() => {
@@ -28,10 +29,17 @@ const Location = () => {
             setLon(data[0].lon)
         }
             catch(err)  {
-                console.log(err);
-              }
+                console.log(err)
+                setError("Check location and retry.")
+                
+                
+            }
         }
         fetchAPI(); 
+
+        function Wrong() {
+            error = <h3>Please check the spelling of your location and retry.</h3>
+        }
     }
    
     return (
@@ -60,6 +68,7 @@ const Location = () => {
                 </div>
             </form>
             <h2>{city} {state}</h2>
+            {error}
             
               
         </section>
