@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Sunny from "../images/sunny.jpg";
 import Thunderstorm from "../images/thunderstorm.jpg";
 import Drizzle from "../images/drizzle.jpg";
@@ -9,33 +10,47 @@ import Clouds2 from "../images/clouds2.jpg"
 
 
 
+
+
 const Weather = props => {
     const [temp, setTemp] = useState("");
     const [conditions, setConditions] = useState("");
     const [feelsLike, setFeelsLike] = useState("")
     var [id, setID] = useState("");
+    const [name, setName] = useState("");
     let image;
+    const lat = props.lat;
+    const lon = props.lon;
+    const navigate = useNavigate();
     
     //fetch
     useEffect(() => {
-        async function fetchAPI(){
-            try {
-            const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${props.lat}&lon=${props.lon}&appid=5fa27a76f3e844905dbb0c506ed24496&units=imperial`)
-            const data = await response.json();
-            setTemp(data.main.temp);
-            setConditions(data.weather[0].description);
-            setID(data.weather[0].id);
-            setFeelsLike(data.main.feels_like);
-            }
-            catch(err)  {
-                console.log(err);
-            }
-        }
-            fetchAPI();
-    }, [props.lat, props.lon]);
-    
 
-    //conditions code check fo images
+        if (props.lat !== "" && props.lon !== "") {
+            async function fetchAPI(){
+                try {
+                const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${props.lat}&lon=${props.lon}&appid=5fa27a76f3e844905dbb0c506ed24496&units=imperial`)
+                const data = await response.json();
+                setTemp(data.main.temp);
+                setConditions(data.weather[0].description);
+                setID(data.weather[0].id);
+                setFeelsLike(data.main.feels_like);
+                setName(data.name);
+                }
+                catch(err)  {
+                    console.log(err);
+                }
+            }
+                fetchAPI();
+        }
+    }, [props.lat, props.lon]);
+
+ //call to page Sevenday
+ function seven(){
+    navigate("/sevenday" , {state: {lat:{lat}, lon:{lon}, city:{name}}})
+}
+
+    //conditions code check for images
     if(id === 800) {
         image = Sunny;
     } else 
@@ -62,13 +77,57 @@ const Weather = props => {
 
     return (
         <section>
-            <img src={image} alt="conditions" />
-            <h3>Today</h3>
-            <p>Temperature: {temp}°F</p>
-            <p>Feels Like: {feelsLike}</p>
-            <p>Conditions: {conditions}</p>
-            
+            <div style={styles.btnAlign}> 
+            <button style={styles.button} className="button" type="button" onClick={seven}>7 Day</button>
+            </div>
+            <h2 style={styles.h2}>{name}</h2>
+            <div style={styles.imgContainer}>
+            <img style={styles.image} src={image} alt="conditions" />
+            </div>
+            <div style={styles.card}>
+                <div  className="card">
+                    <h3 style={styles.h3}>Today</h3>
+                    <p style={styles.p}>Temperature: {temp}°F</p>
+                    <p style={styles.p}>Feels Like: {feelsLike}°F</p>
+                    <p style={styles.p}>Conditions: {conditions}</p>
+                </div>
+            </div>
+           
         </section>
     )
 }
 export default Weather
+
+const styles = {
+    image: {
+        width: '50%',
+    },
+    imgContainer: {
+        display: 'flex',
+        justifyContent: 'center'
+    },
+    h2: {
+        textAlign: 'center'
+    },
+    h3: {
+        textAlign: 'center'
+    },
+    p: {
+        color: '#DFF0F6',
+        fontSize: '18px',
+        marginLeft: '10px',
+        lineHeight: '26px'
+    },
+    btnAlign: {
+        display: 'flex',
+        justifyContent: 'center',  
+    },
+    button: {
+        marginTop: '20px',
+        marginBottom: '20px'
+    },
+    card: {
+        display: 'flex',
+        justifyContent: 'center'
+    }
+}

@@ -7,26 +7,40 @@ const Sevenday = () => {
     const location = useLocation();
     const lat = location.state.lat.lat;
     const lon = location.state.lon.lon;
-    const city = location.state.city.city;
-    const state = location.state.state.state;
+    const city = location.state.city.name;
+    
 
     const navigate = useNavigate();
     
     //button back to Current page
     function current(){
-        navigate("/current" , {state: {lat:{lat}, lon:{lon}, city:{city}, state:{state}}})
+        navigate("/current" , {state: {lat:{lat}, lon:{lon}, city:{city}}})
     }
     
 
     return (
         <div>
-            <h2>{city}, {state}</h2>
-            <div>
-               <button type="button" onClick={current}>Current</button>
+            <div style={styles.btnAlign}>
+               <button style={styles.button} className="button" type="button" onClick={current}>Current</button>
             </div>
-            <Forecast lat={lat} lon={lon} city={city} state={state} />
+            <h2 style={styles.h2}>{city}</h2>
+            <Forecast lat={lat} lon={lon} city={city}  />
         </div>
     )
 
 }
 export default Sevenday;
+
+const styles = {
+    btnAlign: {
+        display: 'flex',
+        justifyContent: 'center',  
+    },
+    button: {
+        marginTop: '20px',
+        marginBottom: '20px'
+    },
+    h2: {
+        textAlign: 'center'
+    }
+}

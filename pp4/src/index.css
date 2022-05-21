@@ -1,13 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Roboto&display=swap');
+
+html {
+  font-size: 62.5%;
+  font-family: 'Roboto', sans-serif;
+}
+
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font: 1.8rem/1.2 "Poppins", sans-serif;
+  background-color: #F2E8CF;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+/* CSS Reset =========================== */
+body, nav, section, footer, article, h1, h2, h3, h4, p, a, ol, ul, li, button, fieldset, form, label {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  list-style: none;
+  font-size: 100%;
+  text-decoration: none;
+  font-weight: normal;
+  color: inherit;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  vertical-align: baseline;
+}
+
+h1 {
+  font-size: 4.2rem;
+  color: #DFF0F6;
+}
+
+h2 {
+  font-size: 2.8rem;
+  text-transform: capitalize;
+  color: #0B2027;
+}
+
+h3 {
+  font-size: 2.6rem;
+  color: #DFF0F6;
+}
+
+.button {
+  font-size: 1.8rem;
+  color: black;
+  background: #80C3DB;
+  align-items: center;
+  margin: 1rem;
+  width: 10rem;
+  height: 4rem;
+  border-radius: 2rem;
+  cursor: pointer;
+}
+
+.button:hover {
+  background: #3190AF ;
+}
+
+.card {
+  background-color: #0B2027;
+  margin: 2rem 1rem;
+}
+
+@media only screen and (max-width: 479px) {
+  .card {
+    width: 75%;
+  }
+}
+
+@media screen and (min-width: 480px) {
+  .card {
+    width: 45%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .card {
+    width: 40%;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .card {
+    width: 35%;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .card {
+    width: 25%;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .card {
+    width: 20%;
+  }
 }

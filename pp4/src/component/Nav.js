@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, useLocation } from 'react-router-dom';
+import styled from "styled-components";
 
 const Nav = () => {
     //assigning location variable
@@ -13,8 +14,17 @@ const Nav = () => {
 
     return (
         <nav >
-            <Link to="/" className={splitLocation[1] === "homepage" ? "active" : ""}>Homepage</Link>
+            <StyledLink to="/" className={splitLocation[1] === "homepage" ? "active" : ""}>Your Location</StyledLink>
         </nav>
     )
 }
 export default Nav;
+
+const StyledLink = styled(Link)`
+    font-size: 18px;
+    margin-left: 5%;
+    color: #0B2027;
+    &:hover {
+        color: #3190AF;
+    }
+`

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Location = () => {
+const Location = props => {
     const [city, setCity] = useState("");
     const [state, setState] = useState("");
     const [lat, setLat] = useState("");
@@ -13,12 +13,12 @@ const Location = () => {
     useEffect (() => {
         
         if(lat !== "" && lon !== "") {
-            return navigate("current" , {state: {lat:{lat}, lon:{lon}, city:{city}, state:{state}}})
+            return navigate("/current" , {state: {lat:{lat}, lon:{lon}, city:{city}, state:{state}}})
         }
     
     });
    
-    //fetch function
+    //fetch Latitude and Longitude
     function FetchData(city, state){
         
         async function fetchAPI(){
@@ -31,15 +31,9 @@ const Location = () => {
             catch(err)  {
                 console.log(err)
                 setError("Check location and retry.")
-                
-                
             }
         }
-        fetchAPI(); 
-
-        function Wrong() {
-            error = <h3>Please check the spelling of your location and retry.</h3>
-        }
+        fetchAPI();
     }
    
     return (
@@ -48,26 +42,25 @@ const Location = () => {
                 onSubmit={e => {
                     e.preventDefault();
                     FetchData(city, state);
-                   
                 }}>
-                <div>
-                    <label>City</label>
-                    <input
-                        name="city"
-                        value={city}
-                        onChange={(e) => setCity(e.target.value)} />
-                </div>
-                <div>
-                    <label>State</label>
-                    <input
-                        name="state"
-                        onChange={(e) => setState(e.target.value)} />
-                </div>
-                <div>
-                    <button type="submit">Submit</button>
+                <div style={styles.submitBox}>
+                    <div style={styles.inputs}>
+                        <div style={styles.space}>
+                            <label style={styles.label}>City</label>
+                            <input style={styles.inputBar}
+                                name="city"
+                                onChange={(e) => setCity(e.target.value)} />
+                        </div>
+                        <div style={styles.space}>
+                            <label style={styles.label}>State</label>
+                            <input style={styles.inputBar}
+                                name="state"
+                                onChange={(e) => setState(e.target.value)} />
+                        </div>
+                    </div>
+                    <button style={styles.button} className="button" type="submit" >Submit</button>
                 </div>
             </form>
-            <h2>{city} {state}</h2>
             {error}
             
               
@@ -76,3 +69,26 @@ const Location = () => {
 } 
 export default Location;
 
+const styles ={
+    label: {
+        fontSize: '18px',
+        margin: '0 10px',
+        color: '#0B2027'
+    },
+    inputs: {
+        display: 'flex',
+        flexWrap: 'wrap',
+        marginLeft: '5%'
+    },
+    inputBar: {
+        backgroundColor: '#DFF0F6',
+        border: 'solid'
+    },
+    space: {
+        marginTop: '10px'
+    },
+    button: {
+        marginLeft: '10%'
+    }
+   
+}
