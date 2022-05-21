@@ -25,6 +25,7 @@ const styles = {
     },
     h2: {
         padding: '1rem 0',
-        textAlign: 'center'
+        textAlign: 'center',
+        color: '#DFF0F6'
     }
 }

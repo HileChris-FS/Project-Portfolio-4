@@ -10,11 +10,6 @@ body {
   background-color: #F2E8CF;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
 /* CSS Reset =========================== */
 body, nav, section, footer, article, h1, h2, h3, h4, p, a, ol, ul, li, button, fieldset, form, label {
   margin: 0;
@@ -45,6 +40,8 @@ h3 {
   font-size: 2.6rem;
   color: #DFF0F6;
 }
+
+
 
 .button {
   font-size: 1.8rem;

@@ -7,7 +7,7 @@ const Location = props => {
     const [lat, setLat] = useState("");
     const [lon, setLon] = useState("")
     const navigate = useNavigate();
-    const [error, setError] = useState("")
+    
    
     //verify defined lat and lon
     useEffect (() => {
@@ -16,7 +16,7 @@ const Location = props => {
             return navigate("/current" , {state: {lat:{lat}, lon:{lon}, city:{city}, state:{state}}})
         }
     
-    });
+    }, [lat, lon]);
    
     //fetch Latitude and Longitude
     function FetchData(city, state){
@@ -30,7 +30,7 @@ const Location = props => {
         }
             catch(err)  {
                 console.log(err)
-                setError("Check location and retry.")
+                alert("Check location and retry.")
             }
         }
         fetchAPI();
@@ -61,7 +61,7 @@ const Location = props => {
                     <button style={styles.button} className="button" type="submit" >Submit</button>
                 </div>
             </form>
-            {error}
+           
             
               
         </section>

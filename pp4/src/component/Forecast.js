@@ -30,7 +30,6 @@ const Forecast = props => {
             const response = await fetch(fetchURL)
             const data = await response.json();
             setData(data.daily);
-            console.log(data)
          
             }
             catch(err)  {
@@ -47,13 +46,13 @@ const Forecast = props => {
     //condition to handle undefined data before fetch
     if (data === "") {
         forecast =<section>
-            <h3>{date.toDateString()}</h3>
-            <h3>{date2.toDateString()}</h3>
-            <h3>{date3.toDateString()}</h3>
-            <h3>{date4.toDateString()}</h3>
-            <h3>{date5.toDateString()}</h3>
-            <h3>{date6.toDateString()}</h3>
-            <h3>{date7.toDateString()}</h3>
+            <h3 style={styles.h3}>{date.toDateString()}</h3>
+            <h3 style={styles.h3}>{date2.toDateString()}</h3>
+            <h3 style={styles.h3}>{date3.toDateString()}</h3>
+            <h3 style={styles.h3}>{date4.toDateString()}</h3>
+            <h3 style={styles.h3}>{date5.toDateString()}</h3>
+            <h3 style={styles.h3}>{date6.toDateString()}</h3>
+            <h3 style={styles.h3}>{date7.toDateString()}</h3>
         </section>
     } else {
             forecast = <section>
