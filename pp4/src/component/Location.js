@@ -16,7 +16,7 @@ const Location = props => {
             return navigate("/current" , {state: {lat:{lat}, lon:{lon}, city:{city}, state:{state}}})
         }
     
-    }, [lat, lon]);
+    }, [lat, lon, city, state, navigate]);
    
     //fetch Latitude and Longitude
     function FetchData(city, state){
