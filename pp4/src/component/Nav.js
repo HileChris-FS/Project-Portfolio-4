@@ -14,7 +14,7 @@ const Nav = () => {
 
     return (
         <nav >
-            <StyledLink to="/" className={splitLocation[1] === "homepage" ? "active" : ""}>Your Location</StyledLink>
+            <StyledLink to="/" className={splitLocation[1] === "homepage" ? "active" : ""}>Homepage</StyledLink>
         </nav>
     )
 }
