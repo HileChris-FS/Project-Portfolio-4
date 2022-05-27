@@ -59,9 +59,10 @@ const Location = props => {
                                 name="state"
                                 onChange={(e) => setState(e.target.value)} />
                         </div>
+                        <button className="button" type="submit" >Submit</button>
                     </div>
-                    <button style={styles.button} className="button" type="submit" >Submit</button>
                 </div>
+                
             </form>
            
             
@@ -75,22 +76,24 @@ const styles ={
     label: {
         fontSize: '18px',
         margin: '0 10px',
-        color: '#0B2027'
+        color: '#DFF0F6'
     },
     inputs: {
         display: 'flex',
         flexWrap: 'wrap',
-        marginLeft: '5%'
     },
     inputBar: {
         backgroundColor: '#DFF0F6',
         border: 'solid'
     },
     space: {
-        marginTop: '10px'
+        marginTop: '18px'
     },
-    button: {
-        marginLeft: '10%'
+    submitBox: {
+        display: 'flex',
+        justifyContent: 'center',
+        margin: '20px 0',
+        backgroundColor: '#0B2027'
     }
    
 }

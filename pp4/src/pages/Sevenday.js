@@ -45,14 +45,6 @@ const Sevenday = () => {
 export default Sevenday;
 
 const styles = {
-    btnAlign: {
-        display: 'flex',
-        justifyContent: 'center',  
-    },
-    button: {
-        marginTop: '20px',
-        marginBottom: '20px'
-    },
     h2: {
         textAlign: 'center',
         marginBottom: '20px'

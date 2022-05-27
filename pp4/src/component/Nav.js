@@ -17,7 +17,7 @@ const Nav = props => {
     const splitLocation = pathname.split("/");
 
     return (
-        <nav >
+        <nav style={styles.nav}>
              {/* Checking the current path name using javascript ternary operator and if true adding active classname to it */}
             <StyledLink to="/" className={splitLocation[1] === "" ? "active" : ""}>Homepage</StyledLink>
             <StyledLink to="/current" state={{lat:{lat}, lon:{lon}, city:{city}}} className={splitLocation[1] === "current" ? "active" : "" }>Current</StyledLink>
@@ -27,10 +27,17 @@ const Nav = props => {
 }
 export default Nav;
 
+const styles = {
+    nav: {
+        display: 'flex',
+        justifyContent: 'center'
+    }
+}
+
 const StyledLink = styled(Link)`
     font-size: 18px;
-    margin-left: 5%;
     color: #0B2027;
+    margin: 10px 20px;
     &:hover {
         color: #80C3DB;
     }

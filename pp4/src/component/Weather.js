@@ -14,7 +14,10 @@ import Clouds2 from "../images/clouds2.jpg";
 const Weather = props => {
     const [temp, setTemp] = useState("");
     const [conditions, setConditions] = useState("");
-    const [feelsLike, setFeelsLike] = useState("")
+    const [feelsLike, setFeelsLike] = useState("");
+    const [max, setMax] = useState("");
+    const [min, setMin] = useState("");
+    const [wind, setWind] = useState("");
     var [id, setID] = useState("");
     let image;
     
@@ -30,7 +33,10 @@ const Weather = props => {
                 setConditions(data.weather[0].description);
                 setID(data.weather[0].id);
                 setFeelsLike(data.main.feels_like);
-              
+                setWind(data.wind.speed);
+                setMax(data.main.temp_max);
+                setMin(data.main.temp_min);
+                    console.log(data)
                 }
                 catch(err)  {
                     console.log(err);
@@ -66,51 +72,35 @@ const Weather = props => {
 
 
     return (
-        <section>
-            <div style={styles.imgContainer}>
-            <img style={styles.image} src={image} alt="conditions" />
+        <section className="container">
+            <img className="img" src={image} alt="conditions" />
+            <div className="card">
+                <h3 style={styles.h3}>Today</h3>
+                <p style={styles.p}>Temperature: {temp}°F</p>
+                <p style={styles.p}>Feels Like: {feelsLike}°F</p>
+                <p style={styles.p}>Conditions: {conditions}</p>
+                <p style={styles.p}>Wind Speed: {wind} mph</p>
+                <hr style={styles.hr}></hr>
+                <p style={styles.p}>High Temp: {max}°F</p>
+                <p style={styles.p}>Low Temp: {min}°F</p>
             </div>
-            <div style={styles.card}>
-                <div  className="card">
-                    <h3 style={styles.h3}>Today</h3>
-                    <p style={styles.p}>Temperature: {temp}°F</p>
-                    <p style={styles.p}>Feels Like: {feelsLike}°F</p>
-                    <p style={styles.p}>Conditions: {conditions}</p>
-                </div>
-            </div>
-           
         </section>
     )
 }
 export default Weather
 
 const styles = {
-    image: {
-        width: '50%',
-    },
-    imgContainer: {
-        display: 'flex',
-        justifyContent: 'center'
-    },
     h3: {
         textAlign: 'center'
     },
     p: {
+        textAlign: 'center',
         color: '#DFF0F6',
         fontSize: '18px',
         marginLeft: '10px',
-        lineHeight: '26px'
+        lineHeight: '40px'
     },
-    btnAlign: {
-        display: 'flex',
-        justifyContent: 'center',  
-    },
-    button: {
-        marginTop: '20px',
-        marginBottom: '20px'
-    },
-    card: {
-        display: 'flex',
-        justifyContent: 'center'
+    hr: {
+        width: '90%'
     }
 }
