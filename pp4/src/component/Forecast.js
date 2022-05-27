@@ -46,6 +46,7 @@ const Forecast = props => {
     //condition to handle undefined data before fetch
     if (data === "") {
         forecast =<section>
+            <h2 styles={styles.h2}>Getting Forecast</h2>
             <h3 style={styles.h3}>{date.toDateString()}</h3>
             <h3 style={styles.h3}>{date2.toDateString()}</h3>
             <h3 style={styles.h3}>{date3.toDateString()}</h3>
@@ -140,6 +141,10 @@ const Forecast = props => {
 export default Forecast;
 
 const styles = {
+    h2: {
+        textAlign: 'center',
+        marginBottom: '20px'
+    },
     h3: {
         textAlign: 'center'
     },

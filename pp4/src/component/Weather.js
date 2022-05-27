@@ -16,7 +16,6 @@ const Weather = props => {
     const [conditions, setConditions] = useState("");
     const [feelsLike, setFeelsLike] = useState("")
     var [id, setID] = useState("");
-    const [name, setName] = useState("");
     let image;
     
     //fetch
@@ -31,7 +30,7 @@ const Weather = props => {
                 setConditions(data.weather[0].description);
                 setID(data.weather[0].id);
                 setFeelsLike(data.main.feels_like);
-                setName(data.name);
+              
                 }
                 catch(err)  {
                     console.log(err);
@@ -68,7 +67,6 @@ const Weather = props => {
 
     return (
         <section>
-            <h2 style={styles.h2}>{name}</h2>
             <div style={styles.imgContainer}>
             <img style={styles.image} src={image} alt="conditions" />
             </div>
@@ -93,10 +91,6 @@ const styles = {
     imgContainer: {
         display: 'flex',
         justifyContent: 'center'
-    },
-    h2: {
-        textAlign: 'center',
-        marginBottom: '20px'
     },
     h3: {
         textAlign: 'center'

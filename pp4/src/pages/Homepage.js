@@ -10,6 +10,7 @@ const Homepage = props => {
     const [lat, setLat] = useState("");
     const [lon, setLon] = useState("");
     const [city, setCity] = useState("");
+    const [state, setState] = useState("");
     const [status, setStatus] = useState("");
     let noLocation;
 
@@ -38,6 +39,7 @@ const Homepage = props => {
                 const response = await fetch(`http://api.positionstack.com/v1/reverse?access_key=d4320c0f6322c4e169fa0fc2042ee910&query=${lat},${lon}&output=json`)
                 const data = await response.json();
                 setCity(data.data[1].locality);
+                setState(data.data[1].region);
                 }
                 catch(err)  {
                     console.log(err);
@@ -57,7 +59,10 @@ const Homepage = props => {
             </section>
     } else  {
         noLocation =
+        <div>
+        <h2 style={styles.h2}>{city}, {state}</h2>
         <Weather lat={lat} lon={lon}/>
+        </div>
     }
 
     return (
@@ -72,6 +77,10 @@ const Homepage = props => {
 export default Homepage;
 
 const styles = {
+    h2: {
+        textAlign: 'center',
+        marginBottom: '20px'
+    },
     h3: {
         color: '#0B2027',
         textAlign: 'center',
