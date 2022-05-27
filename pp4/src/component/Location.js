@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+
 const Location = props => {
     const [city, setCity] = useState("");
     const [state, setState] = useState("");
@@ -38,6 +39,7 @@ const Location = props => {
    
     return (
         <section>
+          
             <form 
                 onSubmit={e => {
                     e.preventDefault();

@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import Sunny from "../images/sunny.jpg";
 import Thunderstorm from "../images/thunderstorm.jpg";
 import Drizzle from "../images/drizzle.jpg";
 import Rain from "../images/rain.jpg";
-import Snow from "../images/snow.jpg"
-import Clouds from "../images/clouds.jpg"
-import Clouds2 from "../images/clouds2.jpg"
+import Snow from "../images/snow.jpg";
+import Clouds from "../images/clouds.jpg";
+import Clouds2 from "../images/clouds2.jpg";
 
 
 
@@ -19,9 +18,6 @@ const Weather = props => {
     var [id, setID] = useState("");
     const [name, setName] = useState("");
     let image;
-    const lat = props.lat;
-    const lon = props.lon;
-    const navigate = useNavigate();
     
     //fetch
     useEffect(() => {
@@ -44,11 +40,6 @@ const Weather = props => {
                 fetchAPI();
         }
     }, [props.lat, props.lon]);
-
- //call to page Sevenday
- function seven(){
-    navigate("/sevenday" , {state: {lat:{lat}, lon:{lon}, city:{name}}})
-}
 
     //conditions code check for images
     if(id === 800) {
@@ -77,9 +68,6 @@ const Weather = props => {
 
     return (
         <section>
-            <div style={styles.btnAlign}> 
-            <button style={styles.button} className="button" type="button" onClick={seven}>7 Day</button>
-            </div>
             <h2 style={styles.h2}>{name}</h2>
             <div style={styles.imgContainer}>
             <img style={styles.image} src={image} alt="conditions" />
@@ -107,7 +95,8 @@ const styles = {
         justifyContent: 'center'
     },
     h2: {
-        textAlign: 'center'
+        textAlign: 'center',
+        marginBottom: '20px'
     },
     h3: {
         textAlign: 'center'

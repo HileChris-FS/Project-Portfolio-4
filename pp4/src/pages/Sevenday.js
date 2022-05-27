@@ -1,30 +1,41 @@
-import React  from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import React, { useEffect, useState }  from "react";
+import { useLocation } from "react-router-dom";
 import Forecast from "../component/Forecast";
+import Location from "../component/Location";
+import Nav from "../component/Nav";
+
 
 
 const Sevenday = () => {
     const location = useLocation();
     const lat = location.state.lat.lat;
     const lon = location.state.lon.lon;
-    const city = location.state.city.name;
-    
+    const [city, setCity] = useState("");
 
-    const navigate = useNavigate();
-    
-    //button back to Current page
-    function current(){
-        navigate("/current" , {state: {lat:{lat}, lon:{lon}, city:{city}}})
-    }
-    
+    useEffect(() => {
 
+        if (lat !== "" && lon !== "") {
+            async function fetchAPI(){
+                try {
+                const response = await fetch(`http://api.positionstack.com/v1/reverse?access_key=d4320c0f6322c4e169fa0fc2042ee910&query=${lat},${lon}&output=json`)
+                const data = await response.json();
+                setCity(data.data[1].locality);
+                }
+                catch(err)  {
+                    console.log(err);
+                }
+            }
+                fetchAPI();
+        }
+    }, [lat, lon]);
+
+ 
     return (
         <div>
-            <div style={styles.btnAlign}>
-               <button style={styles.button} className="button" type="button" onClick={current}>Current</button>
-            </div>
+            <Nav lat={lat} lon={lon} city={city}/>
+            <Location />
             <h2 style={styles.h2}>{city}</h2>
-            <Forecast lat={lat} lon={lon} city={city}  />
+            <Forecast lat={lat} lon={lon}   />
         </div>
     )
 
