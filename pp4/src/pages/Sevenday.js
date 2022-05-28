@@ -18,10 +18,10 @@ const Sevenday = () => {
         if (lat !== "" && lon !== "") {
             async function fetchAPI(){
                 try {
-                const response = await fetch(`http://api.positionstack.com/v1/reverse?access_key=d4320c0f6322c4e169fa0fc2042ee910&query=${lat},${lon}&output=json`)
+                const response = await fetch(`https://us1.locationiq.com/v1/reverse.php?key=pk.c2d54472868006a62f7aa20f13eab55f&lat=${lat}&lon=${lon}&format=json`)
                 const data = await response.json();
-                setCity(data.data[1].locality);
-                setState(data.data[1].region)
+                setCity(data.address.city);
+                setState(data.address.state);
                 }
                 catch(err)  {
                     console.log(err);

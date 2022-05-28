@@ -36,7 +36,7 @@ const Weather = props => {
                 setWind(data.wind.speed);
                 setMax(data.main.temp_max);
                 setMin(data.main.temp_min);
-                    console.log(data)
+                    
                 }
                 catch(err)  {
                     console.log(err);
