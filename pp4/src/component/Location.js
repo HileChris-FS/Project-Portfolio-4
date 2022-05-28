@@ -24,10 +24,10 @@ const Location = props => {
         
         async function fetchAPI(){
             try {
-            const response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city},${state},US&limit=1&appid=5fa27a76f3e844905dbb0c506ed24496`)
+            const response = await fetch(`https://us1.locationiq.com/v1/search.php?key=pk.c2d54472868006a62f7aa20f13eab55f&q=${city},${state}&format=json`)
             const data = await response.json();
-            setLat(data[0].lat)
-            setLon(data[0].lon)
+            setLat(data[0].lat);
+            setLon(data[0].lon);
         }
             catch(err)  {
                 console.log(err)
