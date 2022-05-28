@@ -13,6 +13,7 @@ const Sevenday = () => {
     const [city, setCity] = useState("");
     const [state, setState] = useState("");
 
+    //fetch for reverse geocoding of city and state
     useEffect(() => {
 
         if (lat !== "" && lon !== "") {

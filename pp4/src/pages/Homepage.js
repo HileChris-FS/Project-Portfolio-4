@@ -31,6 +31,7 @@ const Homepage = props => {
             }
     }, [lat, lon]);
 
+    //fetch for reverse geocoding of city and state
     useEffect(() => {
 
         if (lat !== "" && lon !== "") {
@@ -49,6 +50,7 @@ const Homepage = props => {
         }
     }, [lat, lon]);
 
+    //if location services are off
     if (status === 'Unable to retrieve your location') {
         noLocation = 
             <section>

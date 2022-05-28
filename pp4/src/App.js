@@ -3,6 +3,7 @@ import Homepage from "./pages/Homepage";
 import { Route, Routes } from 'react-router-dom';
 import Current from './pages/Current';
 import Sevenday from "./pages/Sevenday";
+import Footer from "./component/Footer";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
               </Routes>
             </section>
         </main>
+        <Footer />
     </div>
   );
 }

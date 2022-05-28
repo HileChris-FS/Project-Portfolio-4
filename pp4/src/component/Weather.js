@@ -21,7 +21,7 @@ const Weather = props => {
     var [id, setID] = useState("");
     let image;
     
-    //fetch
+    //fetch for surrent weather
     useEffect(() => {
 
         if (props.lat !== "" && props.lon !== "") {

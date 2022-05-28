@@ -47,15 +47,9 @@ const Forecast = props => {
     if (data === "") {
         forecast =<section>
             <h2 styles={styles.h2}>Getting Forecast</h2>
-            <h3 style={styles.h3}>{date.toDateString()}</h3>
-            <h3 style={styles.h3}>{date2.toDateString()}</h3>
-            <h3 style={styles.h3}>{date3.toDateString()}</h3>
-            <h3 style={styles.h3}>{date4.toDateString()}</h3>
-            <h3 style={styles.h3}>{date5.toDateString()}</h3>
-            <h3 style={styles.h3}>{date6.toDateString()}</h3>
-            <h3 style={styles.h3}>{date7.toDateString()}</h3>
         </section>
     } else {
+    //Display once loaded with Forecast
             forecast = <section>
             <div style={styles.cardLayout}>
                 <div className="card">

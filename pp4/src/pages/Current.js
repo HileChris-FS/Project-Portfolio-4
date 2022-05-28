@@ -4,9 +4,6 @@ import { useLocation } from "react-router-dom";
 import Weather from "../component/Weather";
 import Nav from "../component/Nav";
 
-
-
-
 const Current = () => {
     const location = useLocation();
     const lat = location.state.lat.lat;
@@ -14,6 +11,7 @@ const Current = () => {
     const [city, setCity] = useState("");
     const [state, setState] = useState("");
     
+    //fetch for reverse geocoding of city and state
     useEffect(() => {
 
         if (lat !== "" && lon !== "") {
